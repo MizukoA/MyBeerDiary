@@ -12,7 +12,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var imageView: UIImageView!
     
-    var data: [String: String]?
+    var data: DiaryNode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +34,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             return
         }
         
-        if let _myPlace = _data["myPlace"] {
+        if let _myPlace = _data.place {
             self.myPlace = _myPlace
             self.inputTextPlace.text = _myPlace
         }
         
-        if let _myDrink = _data["myDrink"] {
-            self.myDrink = _myDrink
-            self.inputTextDrink.text = _myDrink
-        }
+            self.myDrink = _data.drink
+            self.inputTextDrink.text = _data.drink
         
         
         
@@ -82,7 +80,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let gallery = UIAlertAction(title: "Gallery", style: .default) { (alert) in
             print("Gallery")
             guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
-                print ("カメラへのアクセスができません")
+                print ("フォトライブラリへのアクセスができません")
                 return
             }
             imagePickerController.sourceType = .photoLibrary
