@@ -6,11 +6,11 @@
 //  Copyright © 2018 青柳瑞子. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct DiaryNode {
     let date: String
     let drink: String
     let place: String?
-    let image: Data
+    let image: UIImage
 }
