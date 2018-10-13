@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,11 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        // FIrebase init
         FirebaseApp.configure()
+        
+        // TwitterKit init
+        TWTRTwitter.sharedInstance().start(withConsumerKey:"1050957586491568129-nIKEGfwA0Km9NOG5ss2yTpfPgK8cPx", consumerSecret:"OcGAY2ptsaGsxq4pI6Kuufxws9vncbL40LYj5kGpbTHWG")
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        let loginViewController = LoginViewController()
+        let feedViewController = FeedViewController()
+        let embeddedNavigationController = UINavigationController(rootViewController: feedViewController)
+        
+        window?.rootViewController = embeddedNavigationController
         return true
     }
 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return TWTRTwitter.sharedInstance().application(app, open: url, options: options)
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
