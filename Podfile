@@ -6,6 +6,7 @@ target 'MyBeerDiary2' do
   use_frameworks!
 
   # Pods for MyBeerDiary2
-pod 'Firebase/Core'
-pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'TwitterKit'
 end
