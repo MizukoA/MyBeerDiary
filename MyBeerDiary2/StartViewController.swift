@@ -12,18 +12,7 @@ class StartViewController: UIViewController {
     
     //    var diaries: [[String: String]]? = [[String: String]]()
     
-    lazy var diary: Diary = {
-        let node0 = DiaryNode(date: "2018/02/10", drink: "Beer", place: "Here", image: Data())
-        let node1 = DiaryNode(date: "2018/02/10", drink: "Wine", place: "hey", image: Data())
-        let diary = Diary(nodes: [node0, node1])
-        return diary
-    }()
-    
-    
-    
-    
-    
-    
+
     @IBOutlet weak var diaryTableView: UITableView!
     
     override func viewDidLoad() {
@@ -82,17 +71,15 @@ class StartViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            guard let data = sender as? DiaryNode else {
-                return
-            }
-            let viewController = segue.destination as! ViewController
-            viewController.data = data
-            
-            
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showDetail" {
+//            guard let data = sender as? DiaryNode else {
+//                return
+//            }
+//            let viewController = segue.destination as! ViewController
+//            viewController.data = data
+//        }
+//    }
     
     
 }
