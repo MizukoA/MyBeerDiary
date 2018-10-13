@@ -12,6 +12,7 @@
 		173B1B012171B32E00E188E5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173B1B002171B32E00E188E5 /* LoginViewController.swift */; };
 		173B1B042171C26C00E188E5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173B1B032171C26C00E188E5 /* FeedViewController.swift */; };
 		173B1B0A2171EEB800E188E5 /* FeedDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173B1B092171EEB800E188E5 /* FeedDetailController.swift */; };
+		17A064702171F6E00051A3B4 /* AddNodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A0646F2171F6E00051A3B4 /* AddNodeViewController.swift */; };
 		26329C562138268C00AF0E17 /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26329C552138268C00AF0E17 /* DiaryTableViewCell.swift */; };
 		264FB3C721719D00004BA161 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 264FB3C621719D00004BA161 /* GoogleService-Info.plist */; };
 		267055B22171DA4100E4D4C5 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267055B12171DA4100E4D4C5 /* FeedCell.swift */; };
@@ -29,6 +30,7 @@
 		173B1B002171B32E00E188E5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		173B1B032171C26C00E188E5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		173B1B092171EEB800E188E5 /* FeedDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailController.swift; sourceTree = "<group>"; };
+		17A0646F2171F6E00051A3B4 /* AddNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNodeViewController.swift; sourceTree = "<group>"; };
 		1DE0D7359F97F93E2B3D7FBB /* Pods_MyBeerDiary2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyBeerDiary2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26329C552138268C00AF0E17 /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
 		264FB3C621719D00004BA161 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 		173B1B052171EE8C00E188E5 /* FeedDetail */ = {
 			isa = PBXGroup;
 			children = (
-				173B1B092171EEB800E188E5 /* FeedDetailController.swift */,
+				17A064722171F7230051A3B4 /* Controller */,
 			);
 			path = FeedDetail;
 			sourceTree = "<group>";
@@ -114,6 +116,30 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		17A0646E2171F6CD0051A3B4 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				17A064712171F71C0051A3B4 /* Controller */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		17A064712171F71C0051A3B4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				17A0646F2171F6E00051A3B4 /* AddNodeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		17A064722171F7230051A3B4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				173B1B092171EEB800E188E5 /* FeedDetailController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		26E88194211EAF4000C34AA4 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +161,7 @@
 		26E8819F211EAF4000C34AA4 /* MyBeerDiary2 */ = {
 			isa = PBXGroup;
 			children = (
+				17A0646E2171F6CD0051A3B4 /* Add */,
 				173B1B052171EE8C00E188E5 /* FeedDetail */,
 				173B1B022171C25700E188E5 /* Feed */,
 				173B1AFE2171B2EB00E188E5 /* Login */,
@@ -311,6 +338,7 @@
 				173B1B012171B32E00E188E5 /* LoginViewController.swift in Sources */,
 				26E881A3211EAF4000C34AA4 /* ViewController.swift in Sources */,
 				173B1AFD2171957D00E188E5 /* DiaryNode.swift in Sources */,
+				17A064702171F6E00051A3B4 /* AddNodeViewController.swift in Sources */,
 				173B1AFB2171957600E188E5 /* Diary.swift in Sources */,
 				26E881A1211EAF4000C34AA4 /* AppDelegate.swift in Sources */,
 				173B1B042171C26C00E188E5 /* FeedViewController.swift in Sources */,
