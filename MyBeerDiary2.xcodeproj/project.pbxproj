@@ -11,7 +11,7 @@
 		173B1AFD2171957D00E188E5 /* DiaryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173B1AFC2171957D00E188E5 /* DiaryNode.swift */; };
 		173B1B012171B32E00E188E5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173B1B002171B32E00E188E5 /* LoginViewController.swift */; };
 		173B1B042171C26C00E188E5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173B1B032171C26C00E188E5 /* FeedViewController.swift */; };
-		26329C542129976800AF0E17 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26329C532129976800AF0E17 /* StartViewController.swift */; };
+		173B1B0A2171EEB800E188E5 /* FeedDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173B1B092171EEB800E188E5 /* FeedDetailController.swift */; };
 		26329C562138268C00AF0E17 /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26329C552138268C00AF0E17 /* DiaryTableViewCell.swift */; };
 		264FB3C721719D00004BA161 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 264FB3C621719D00004BA161 /* GoogleService-Info.plist */; };
 		267055B22171DA4100E4D4C5 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267055B12171DA4100E4D4C5 /* FeedCell.swift */; };
@@ -28,8 +28,8 @@
 		173B1AFC2171957D00E188E5 /* DiaryNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryNode.swift; sourceTree = "<group>"; };
 		173B1B002171B32E00E188E5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		173B1B032171C26C00E188E5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		173B1B092171EEB800E188E5 /* FeedDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailController.swift; sourceTree = "<group>"; };
 		1DE0D7359F97F93E2B3D7FBB /* Pods_MyBeerDiary2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyBeerDiary2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		26329C532129976800AF0E17 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		26329C552138268C00AF0E17 /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
 		264FB3C621719D00004BA161 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		267055B12171DA4100E4D4C5 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -75,10 +75,43 @@
 		173B1B022171C25700E188E5 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				173B1B032171C26C00E188E5 /* FeedViewController.swift */,
-				267055B12171DA4100E4D4C5 /* FeedCell.swift */,
+				173B1B082171EEA300E188E5 /* Controller */,
+				173B1B072171EE9E00E188E5 /* View */,
+				173B1B062171EE9900E188E5 /* Model */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		173B1B052171EE8C00E188E5 /* FeedDetail */ = {
+			isa = PBXGroup;
+			children = (
+				173B1B092171EEB800E188E5 /* FeedDetailController.swift */,
+			);
+			path = FeedDetail;
+			sourceTree = "<group>";
+		};
+		173B1B062171EE9900E188E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				173B1AFA2171957600E188E5 /* Diary.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		173B1B072171EE9E00E188E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				267055B12171DA4100E4D4C5 /* FeedCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		173B1B082171EEA300E188E5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				173B1B032171C26C00E188E5 /* FeedViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		26E88194211EAF4000C34AA4 = {
@@ -102,17 +135,16 @@
 		26E8819F211EAF4000C34AA4 /* MyBeerDiary2 */ = {
 			isa = PBXGroup;
 			children = (
+				173B1B052171EE8C00E188E5 /* FeedDetail */,
 				173B1B022171C25700E188E5 /* Feed */,
 				173B1AFE2171B2EB00E188E5 /* Login */,
 				26E881A0211EAF4000C34AA4 /* AppDelegate.swift */,
 				26E881A2211EAF4000C34AA4 /* ViewController.swift */,
-				26329C532129976800AF0E17 /* StartViewController.swift */,
 				26E881A4211EAF4000C34AA4 /* Main.storyboard */,
 				26E881A7211EAF4300C34AA4 /* Assets.xcassets */,
 				26E881A9211EAF4300C34AA4 /* LaunchScreen.storyboard */,
 				26E881AC211EAF4300C34AA4 /* Info.plist */,
 				26329C552138268C00AF0E17 /* DiaryTableViewCell.swift */,
-				173B1AFA2171957600E188E5 /* Diary.swift */,
 				173B1AFC2171957D00E188E5 /* DiaryNode.swift */,
 				264FB3C621719D00004BA161 /* GoogleService-Info.plist */,
 			);
@@ -281,9 +313,9 @@
 				173B1AFD2171957D00E188E5 /* DiaryNode.swift in Sources */,
 				173B1AFB2171957600E188E5 /* Diary.swift in Sources */,
 				26E881A1211EAF4000C34AA4 /* AppDelegate.swift in Sources */,
-				26329C542129976800AF0E17 /* StartViewController.swift in Sources */,
 				173B1B042171C26C00E188E5 /* FeedViewController.swift in Sources */,
 				26329C562138268C00AF0E17 /* DiaryTableViewCell.swift in Sources */,
+				173B1B0A2171EEB800E188E5 /* FeedDetailController.swift in Sources */,
 				267055B22171DA4100E4D4C5 /* FeedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
