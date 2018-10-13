@@ -46,6 +46,19 @@ class FeedViewController: UIViewController {
         feedCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         feedCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         feedCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        
+        setupAddBarButtonItem()
+    }
+    
+    private func setupAddBarButtonItem() {
+        let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNode))
+        self.navigationItem.rightBarButtonItem = addBarButton
+    }
+    
+    @objc private func addNode() {
+        let addViewController = AddNodeViewController()
+        let embedded = UINavigationController(rootViewController: addViewController)
+        self.navigationController?.present(embedded, animated: true, completion: nil)
     }
     
 }
