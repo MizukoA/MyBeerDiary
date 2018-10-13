@@ -24,7 +24,6 @@ class FeedCell:UICollectionViewCell{
         feedImageView.layer.cornerRadius = 4.0
         feedImageView.contentMode = .scaleAspectFill
         feedImageView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        feedImageView.image = #imageLiteral(resourceName: "beer")
         feedImageView.layer.masksToBounds = true
         return feedImageView
     }()
@@ -35,7 +34,6 @@ class FeedCell:UICollectionViewCell{
         dateLabel.textColor = .black
         dateLabel.font = UIFont.boldSystemFont(ofSize: 16)
         dateLabel.numberOfLines = 1
-        dateLabel.text = "date"
         return dateLabel
     }()
     
@@ -45,7 +43,6 @@ class FeedCell:UICollectionViewCell{
         nameLabel.textColor = .black
         nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
         nameLabel.numberOfLines = 1
-        nameLabel.text = "name"
         return nameLabel
     }()
     
@@ -76,13 +73,15 @@ class FeedCell:UICollectionViewCell{
         nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant:-20) .isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 20) .isActive = true
         
-        
-        
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with model: DiaryNode) {
+        dateLabel.text = "Date: \(model.date)"
+        nameLabel.text = "Drink: \(model.drink)"
+        feedImageView.image = model.image
     }
 }

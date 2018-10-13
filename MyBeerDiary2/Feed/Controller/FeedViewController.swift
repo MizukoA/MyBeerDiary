@@ -10,21 +10,11 @@ import UIKit
 
 class FeedViewController: UIViewController {
     lazy var diary: Diary = {
-        let node0 = DiaryNode(date: "2018/02/10", drink: "Beer", place: "Here", image: Data())
-        let node1 = DiaryNode(date: "2018/02/10", drink: "Wine", place: "hey", image: Data())
+        let node0 = DiaryNode(date: "2018/02/10", drink: "Beer", place: "Here", image: UIImage(named: "beer")!)
+        let node1 = DiaryNode(date: "2018/02/10", drink: "Wine", place: "hey", image: UIImage(named: "beer1")!)
         let diary = Diary(nodes: [node0, node1])
         return diary
     }()
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            guard let data = sender as? DiaryNode else {
-                return
-            }
-            let viewController = segue.destination as! ViewController
-            viewController.data = data
-        }
-    }
-    
     
     lazy var feedCollectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
@@ -62,11 +52,18 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        guard let nodes = diary.nodes else { return 0}
+        return nodes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: indexPath)
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: indexPath) as!  FeedCell
+        if let nodes = diary.nodes {
+            let node = nodes[indexPath.row]
+            cell.configure(with: node)
+        }
+        
         return cell
     }
     
@@ -76,6 +73,17 @@ extension FeedViewController: UICollectionViewDataSource {
 extension FeedViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 339, height: 230)
+        
+    }
+}
+
+extension FeedViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let nodes = diary.nodes else { return }
+        let node = nodes[indexPath.row]
+        let detailViewController = FeedDetailController(node: node)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }
 }
