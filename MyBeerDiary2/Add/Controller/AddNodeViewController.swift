@@ -59,13 +59,14 @@ class AddNodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         view.backgroundColor = .white
 // UIパーツを表示するaddSubView
         view.addSubview(addImageView)
         addImageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20).isActive = true
         addImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         addImageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        addImageView.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        addImageView.heightAnchor.constraint(equalToConstant: 280).isActive = true
         
         view.addSubview(tf)
         tf.topAnchor.constraint(equalTo: addImageView.bottomAnchor, constant: 20).isActive = true
@@ -87,8 +88,7 @@ class AddNodeViewController: UIViewController {
         setupDismissLeftBarButtonItem()
     }
     
-    
-    
+    // close AddNodeViewController
     private func setupDismissLeftBarButtonItem() {
         let dismissBarButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissVC))
         self.navigationItem.leftBarButtonItem = dismissBarButton
