@@ -8,5 +8,7 @@ target 'MyBeerDiary2' do
   # Pods for MyBeerDiary2
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   pod 'TwitterKit'
 end

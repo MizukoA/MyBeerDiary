@@ -22,16 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         // TwitterKit init
-        TWTRTwitter.sharedInstance().start(withConsumerKey:"1050957586491568129-nIKEGfwA0Km9NOG5ss2yTpfPgK8cPx", consumerSecret:"OcGAY2ptsaGsxq4pI6Kuufxws9vncbL40LYj5kGpbTHWG")
+        TWTRTwitter.sharedInstance().start(withConsumerKey:"E1faYiIN1aZ8n5VpSmj4KxI5X", consumerSecret:"8vRXX25bkYboKAKLfmsz5bjhtZbFEBAU3dsKWnhbagWuvdWKbo")
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
         let loginViewController = LoginViewController()
         let feedViewController = FeedViewController()
-        let embeddedNavigationController = UINavigationController(rootViewController: feedViewController)
+        let embeddedNavigationController = UINavigationController(rootViewController: loginViewController)
         
-        window?.rootViewController = embeddedNavigationController
+        window?.rootViewController = loginViewController
         return true
     }
 
