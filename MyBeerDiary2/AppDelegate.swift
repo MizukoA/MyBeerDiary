@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let appContainer = AppContrainerViewController()
         
-        window?.rootViewController = appContainer
+        window?.rootViewController = AddNodeViewController()
         return true
     }
 
