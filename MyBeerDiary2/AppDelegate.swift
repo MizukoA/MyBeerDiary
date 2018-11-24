@@ -27,11 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let loginViewController = LoginViewController()
-        let feedViewController = FeedViewController()
-        let embeddedNavigationController = UINavigationController(rootViewController: loginViewController)
+        let appContainer = AppContrainerViewController()
         
-        window?.rootViewController = loginViewController
+        window?.rootViewController = appContainer
         return true
     }
 
