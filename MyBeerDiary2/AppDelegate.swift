@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let appContainer = AppContrainerViewController()
         
-        window?.rootViewController = AddNodeViewController()
+        window?.rootViewController = UINavigationController(rootViewController: FeedViewController())
         return true
     }
 
