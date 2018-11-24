@@ -9,7 +9,7 @@
 import UIKit
 
 class AddNodeViewController: UIViewController {
-// 写真を表示する
+    // 写真を表示する
     lazy var addImageView: UIImageView = {
         let aiv = UIImageView()
         aiv.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +23,7 @@ class AddNodeViewController: UIViewController {
         return aiv
     }()
     
-// 日付を記録する
+    // 日付を記録する
     let tf: DatePickerTextField = {
         let tf = DatePickerTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +34,7 @@ class AddNodeViewController: UIViewController {
     }()
     
 
-// ビールの名前や場所を記録する
+    // ビールの名前や場所を記録する
     lazy var nametf: UITextField = {
         let nametf = UITextField()
         nametf.translatesAutoresizingMaskIntoConstraints = false
@@ -61,26 +61,27 @@ class AddNodeViewController: UIViewController {
 
         
         view.backgroundColor = .white
-// UIパーツを表示するaddSubView
+        // UIパーツのサイズ on addSubView
+        // for ImagreView
         view.addSubview(addImageView)
         addImageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20).isActive = true
         addImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         addImageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         addImageView.heightAnchor.constraint(equalToConstant: 280).isActive = true
-        
+        // for textField_1 datePicker
         view.addSubview(tf)
         tf.topAnchor.constraint(equalTo: addImageView.bottomAnchor, constant: 20).isActive = true
         tf.leftAnchor.constraint(equalTo: addImageView.leftAnchor, constant: 0).isActive = true
         tf.rightAnchor.constraint(equalTo: addImageView.rightAnchor, constant: 0).isActive = true
         tf.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
+        // for textField_2 note beer name, drinking place and so on
         view.addSubview(nametf)
         nametf.topAnchor.constraint(equalTo: tf.bottomAnchor, constant: 20).isActive = true
         nametf.leftAnchor.constraint(equalTo: addImageView.leftAnchor, constant: 0).isActive = true
         nametf.rightAnchor.constraint(equalTo: addImageView.rightAnchor, constant: 0).isActive = true
         nametf.heightAnchor.constraint(equalToConstant: 50).isActive = true
        
-        // view.addSubview(shareButton)
+        //  shareButton edit on addSubview
         
         let shareBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTouchShareButton))
         navigationItem.rightBarButtonItem = shareBarButton
