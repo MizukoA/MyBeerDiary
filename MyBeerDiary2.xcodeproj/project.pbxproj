@@ -22,10 +22,9 @@
 		267055B22171DA4100E4D4C5 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267055B12171DA4100E4D4C5 /* FeedCell.swift */; };
 		26E881A1211EAF4000C34AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E881A0211EAF4000C34AA4 /* AppDelegate.swift */; };
 		26E881A3211EAF4000C34AA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E881A2211EAF4000C34AA4 /* ViewController.swift */; };
-		26E881A6211EAF4000C34AA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26E881A4211EAF4000C34AA4 /* Main.storyboard */; };
-		26E881A8211EAF4300C34AA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26E881A7211EAF4300C34AA4 /* Assets.xcassets */; };
-		26E881AB211EAF4300C34AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26E881A9211EAF4300C34AA4 /* LaunchScreen.storyboard */; };
 		26F34505219FF85800783CC6 /* DatePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F34504219FF85800783CC6 /* DatePickerTextField.swift */; };
+		26F3450721AA48F200783CC6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F3450621AA48F200783CC6 /* Default-568h@2x.png */; };
+		26F3450921AA4ABA00783CC6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F3450821AA4ABA00783CC6 /* Images.xcassets */; };
 		FE284912E63B099470B29B9D /* Pods_MyBeerDiary2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE0D7359F97F93E2B3D7FBB /* Pods_MyBeerDiary2.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,11 +46,10 @@
 		26E8819D211EAF4000C34AA4 /* MyBeerDiary2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBeerDiary2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E881A0211EAF4000C34AA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26E881A2211EAF4000C34AA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		26E881A5211EAF4000C34AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		26E881A7211EAF4300C34AA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		26E881AA211EAF4300C34AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26E881AC211EAF4300C34AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26F34504219FF85800783CC6 /* DatePickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTextField.swift; sourceTree = "<group>"; };
+		26F3450621AA48F200783CC6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		26F3450821AA4ABA00783CC6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4640EA3F5FF21F2BB999790F /* Pods-MyBeerDiary2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBeerDiary2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyBeerDiary2/Pods-MyBeerDiary2.release.xcconfig"; sourceTree = "<group>"; };
 		88D614D9146EE7A8E24FC3E5 /* Pods-MyBeerDiary2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBeerDiary2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyBeerDiary2/Pods-MyBeerDiary2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +169,7 @@
 		26E88194211EAF4000C34AA4 = {
 			isa = PBXGroup;
 			children = (
+				26F3450621AA48F200783CC6 /* Default-568h@2x.png */,
 				26E8819F211EAF4000C34AA4 /* MyBeerDiary2 */,
 				26E8819E211EAF4000C34AA4 /* Products */,
 				7CE910F56384FCCB901F8A29 /* Pods */,
@@ -196,15 +195,13 @@
 				173B1AFE2171B2EB00E188E5 /* Login */,
 				26E881A0211EAF4000C34AA4 /* AppDelegate.swift */,
 				26E881A2211EAF4000C34AA4 /* ViewController.swift */,
-				26E881A4211EAF4000C34AA4 /* Main.storyboard */,
-				26E881A7211EAF4300C34AA4 /* Assets.xcassets */,
-				26E881A9211EAF4300C34AA4 /* LaunchScreen.storyboard */,
 				26E881AC211EAF4300C34AA4 /* Info.plist */,
 				26329C552138268C00AF0E17 /* DiaryTableViewCell.swift */,
 				173B1AFC2171957D00E188E5 /* DiaryNode.swift */,
 				173CAE9121743980006B012F /* GoogleService-Info.plist */,
 				17285D55219FF40C000C7589 /* Database.swift */,
 				17285D5A21A01A4D000C7589 /* FirebaseImageUploader.swift */,
+				26F3450821AA4ABA00783CC6 /* Images.xcassets */,
 			);
 			path = MyBeerDiary2;
 			sourceTree = "<group>";
@@ -295,10 +292,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26E881AB211EAF4300C34AA4 /* LaunchScreen.storyboard in Resources */,
-				26E881A8211EAF4300C34AA4 /* Assets.xcassets in Resources */,
-				26E881A6211EAF4000C34AA4 /* Main.storyboard in Resources */,
+				26F3450921AA4ABA00783CC6 /* Images.xcassets in Resources */,
 				173CAE9221743980006B012F /* GoogleService-Info.plist in Resources */,
+				26F3450721AA48F200783CC6 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,25 +391,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		26E881A4211EAF4000C34AA4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				26E881A5211EAF4000C34AA4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		26E881A9211EAF4300C34AA4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				26E881AA211EAF4300C34AA4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		26E881AD211EAF4300C34AA4 /* Debug */ = {
