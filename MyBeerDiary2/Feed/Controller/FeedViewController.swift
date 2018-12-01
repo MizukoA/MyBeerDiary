@@ -11,13 +11,8 @@ import UIKit
 class FeedViewController: UIViewController {
     
     let user: User
-    
-    lazy var diary: Diary = {
-        let node0 = DiaryNode(date: "2018/02/10", drink: "Beer", place: "Here", image: UIImage(named: "beer")!)
-        let node1 = DiaryNode(date: "2018/02/10", drink: "Wine", place: "hey", image: UIImage(named: "beer1")!)
-        let diary = Diary(nodes: [node0, node1])
-        return diary
-    }()
+    var nodes = [DiaryNode]()
+
     
     lazy var feedCollectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
@@ -33,6 +28,16 @@ class FeedViewController: UIViewController {
         
     }()
     
+    lazy var addTestButton: UIButton = {
+       let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .red
+        button.setTitle("Insert Automatic Node", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(insertAutomaticNode), for: .touchUpInside)
+        return button
+    }()
+    
     init(user: User = User()) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -45,14 +50,54 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.addSubview(feedCollectionView)
+        view.addSubview(addTestButton)
+        
         feedCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         feedCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         feedCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         feedCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         
+        addTestButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -40).isActive = true
+        addTestButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        addTestButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        addTestButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        
         setupAddBarButtonItem()
-        fireAlertUD()
+//        fireAlertUD()
+        
+        let longPressReconizer = UILongPressGestureRecognizer(target: self, action: #selector(cellSelected(gesture:)))
+        longPressReconizer.delaysTouchesBegan = true
+        self.feedCollectionView.addGestureRecognizer(longPressReconizer)
+        APIService().fetchDiaryNodes(userId: "F6sb5CTbUCMbqLuLC3Ksrl9uQml2") { [weak self] (nodes) in
+            guard let strongSelf = self else { return }
+            strongSelf.nodes = nodes
+            strongSelf.feedCollectionView.reloadData()
+            
+        }
+    }
+    
+    @objc func cellSelected(gesture: UILongPressGestureRecognizer) {
+        if gesture.state != .began {
+            return
+        }
+        let p = gesture.location(in: self.feedCollectionView)
+        
+        if let indexPath = self.feedCollectionView.indexPathForItem(at: p) {
+            removeNode(at: indexPath)
+        } else {
+            print("couldn't find index path")
+        }
+    }
+    
+    private func removeNode(at indexPath: IndexPath) {
+        let node = nodes[indexPath.row]
+        APIService().deleteNode(userId: "F6sb5CTbUCMbqLuLC3Ksrl9uQml2", node: node) { [weak self] (removed) in
+            guard let strongSelf = self else { return }
+            strongSelf.nodes.remove(at: indexPath.row)
+            strongSelf.feedCollectionView.deleteItems(at: [indexPath])
+        }
     }
     
     private func fireAlertUD() {
@@ -71,27 +116,34 @@ class FeedViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = addBarButton
     }
     
+    @objc private func insertAutomaticNode() {
+        let node = DiaryNode(date: "20/12/2018", drink: "Water", pictureUrl: "https://www.water.org.uk/sites/default/files/styles/large/public/images/11138455_m.jpg?itok=vb4Jrz3x", coordinates: Coordinates(latitude: 54.34, longitude: 3.543))
+        APIService().addNewNode(userId: "F6sb5CTbUCMbqLuLC3Ksrl9uQml2", node: node) { [weak self] node in
+            guard let strongSelf = self else { return }
+            strongSelf.nodes.insert(node, at: 0)
+            strongSelf.feedCollectionView.insertItems(at: [IndexPath(item: 0, section: 0)])
+        }
+    }
+    
     @objc private func addNode() {
         let addViewController = AddNodeViewController()
         let embedded = UINavigationController(rootViewController: addViewController)
         self.navigationController?.present(embedded, animated: true, completion: nil)
+        
     }
     
 }
 
 extension FeedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let nodes = diary.nodes else { return 0}
         return nodes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: indexPath) as!  FeedCell
-        if let nodes = diary.nodes {
-            let node = nodes[indexPath.row]
-            cell.configure(with: node)
-        }
+        let node = nodes[indexPath.row]
+        cell.configure(with: node)
         
         return cell
     }
@@ -109,7 +161,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout{
 extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let nodes = diary.nodes else { return }
         let node = nodes[indexPath.row]
         let detailViewController = FeedDetailController(node: node)
         self.navigationController?.pushViewController(detailViewController, animated: true)
