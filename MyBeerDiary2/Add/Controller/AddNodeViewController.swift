@@ -9,6 +9,9 @@
 import UIKit
 
 class AddNodeViewController: UIViewController {
+    
+    
+    var saveBarButton: UIBarButtonItem!
     // 写真を表示する
     lazy var addImageView: UIImageView = {
         let aiv = UIImageView()
@@ -42,6 +45,7 @@ class AddNodeViewController: UIViewController {
         nametf.font = UIFont.boldSystemFont(ofSize: 16)
         nametf.backgroundColor = .yellow
         nametf.delegate = self
+        
         return nametf
     }()
     
@@ -84,10 +88,14 @@ class AddNodeViewController: UIViewController {
        
         //  shareButton edit on addSubview
         
-        let shareBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTouchShareButton))
-        navigationItem.rightBarButtonItem = shareBarButton
+        saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(didTouchSaveButton))
+        
+        navigationItem.rightBarButtonItem = saveBarButton
+        saveBarButton.isEnabled = false
         
         setupDismissLeftBarButtonItem()
+        
+        nametf.addTarget(self, action: #selector(checkSavedStatus), for: .editingChanged)
     }
     
     // close AddNodeViewController
@@ -102,16 +110,21 @@ class AddNodeViewController: UIViewController {
     
     @objc private func dismissWithSave() {
         let alert = UIAlertController(title: "Do you want to save?", message: nil, preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .cancel) { (alert) in
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (alert) in
+            // ここでFirebaseにpic,date,textを送る。APIs, database,
+            // func
             
         }
-        let noAction = UIAlertAction(title: "No", style: .destructive) { (alert) in
-            
+        
+        
+        let noAction = UIAlertAction(title: "No", style: .destructive) { [weak self] (alert) in
+            guard let strongSelf = self else { return }
+            strongSelf.dismissVC()
         }
         alert.addAction(yesAction)
         alert.addAction(noAction)
         if addImageView.image == #imageLiteral(resourceName: "launchlogo")  || nametf.text == nil {
-            print("no save")
+            self.dismissVC()
         } else {
             self.present(alert, animated: true, completion: nil)
         }
@@ -129,6 +142,10 @@ class AddNodeViewController: UIViewController {
         
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true)
+    }
+    
+    @objc func didTouchSaveButton() {
+        print("save")
     }
     
     // カメラ起動
@@ -170,8 +187,6 @@ class AddNodeViewController: UIViewController {
             strongSelf.showKeyboard(true, withNotification: notification)
             print("keyboardWillShowNotification")
             
-            
-            
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: nil) { [weak self] notification in
@@ -203,17 +218,31 @@ class AddNodeViewController: UIViewController {
             
         }
     }
-    
-    
+// press save button which color turns blue and holds the data
+    @objc func checkSavedStatus() {
+        if addImageView.image != #imageLiteral(resourceName: "launchlogo") && !nametf.text!.isEmpty {
+            saveBarButton.isEnabled = true
+        } else {
+            saveBarButton.isEnabled = false
+        }
+    }
 }
 
 extension AddNodeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // フォトライブラリから読み出す
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            print(image.size)
             addImageView.image = image
+
+        //  when we save new one on the gallery
+        //  UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.checkSavedStatus()
+            
+        })
     }
     
 }
