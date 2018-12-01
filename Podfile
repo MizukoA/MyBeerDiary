@@ -11,4 +11,5 @@ target 'MyBeerDiary2' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'TwitterKit'
+  pod 'Kingfisher'
 end
