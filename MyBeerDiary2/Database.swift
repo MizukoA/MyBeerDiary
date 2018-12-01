@@ -9,7 +9,14 @@
 import Foundation
 import Firebase
 
+enum FirebaseRootChild {
+    static let users = "users"
+    static let diaryNode = "diaryNode"
+}
+
 class FirebaseDatabase {
+    
+    
     
     let ref: DatabaseReference
     
