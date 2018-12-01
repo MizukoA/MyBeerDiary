@@ -212,7 +212,6 @@ extension AddNodeViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             addImageView.image = image
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
         picker.dismiss(animated: true, completion: nil)
     }
