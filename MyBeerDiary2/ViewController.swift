@@ -34,12 +34,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             return
         }
         
-        if let _myPlace = _data.place {
-            self.myPlace = _myPlace
-            self.inputTextPlace.text = _myPlace
-        }
-        
-            self.myDrink = _data.drink
+        self.myDrink = _data.drink!
             self.inputTextDrink.text = _data.drink
         
         

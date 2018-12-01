@@ -77,7 +77,7 @@ class FeedDetailController: UIViewController {
     }
     
     func populateData() {
-        imageView.image = node.image
+//        imageView.image = node.image
         dateLabel.text = "Date: \(node.date)"
         nameLabel.text = "Drink: \(node.drink)"
     }

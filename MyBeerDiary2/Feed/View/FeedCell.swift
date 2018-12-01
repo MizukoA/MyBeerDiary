@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 class FeedCell:UICollectionViewCell{
     static let identifier = "FeedCell"
     
@@ -80,8 +82,18 @@ class FeedCell:UICollectionViewCell{
     }
     
     func configure(with model: DiaryNode) {
-        dateLabel.text = "Date: \(model.date)"
-        nameLabel.text = "Drink: \(model.drink)"
-        feedImageView.image = model.image
+        
+        if let date = model.date {
+            dateLabel.text = "Date: \(date)"
+        }
+        
+        if let drink = model.drink {
+            nameLabel.text = "Drink: \(drink)"
+        }
+        
+        if let pictureURL = model.pictureUrl, let url = URL(string: pictureURL) {
+            feedImageView.kf.setImage(with: url)
+        }
+        
     }
 }
