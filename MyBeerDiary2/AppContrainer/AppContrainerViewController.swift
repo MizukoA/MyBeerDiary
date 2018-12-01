@@ -10,14 +10,18 @@ import UIKit
 
 protocol AppContainerDelegate: class {
     func didTapImageIcon()
+    func didLoggedWithTwitter(_ data: TwitterUser)
 }
 
 class AppContrainerViewController: UIViewController {
     
+    let user: User
+    
     var loginViewController: LoginViewController!
     var feedViewController: UINavigationController!
     
-    init() {
+    init(user: User = User()) {
+        self.user = user
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,24 +34,36 @@ class AppContrainerViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        setupLoginViewController()
+        screenManager()
         
     }
     
-    private func setupLoginViewController() {
+    private func screenManager() {
+        print("user.isLogged \(user.isLogged)")
+        if user.isLogged {
+            showFeedViewController(animated: true)
+        } else {
+            showLoginViewController(animated: true)
+        }
+    }
+    
+    private func showLoginViewController(animated: Bool) {
         loginViewController = LoginViewController()
-        loginViewController.view.alpha = 0.0
+        loginViewController.view.alpha = animated ? 0.0 : 1.0
         loginViewController.delegate = self
         self.addChildViewController(loginViewController)
         self.view.addSubview(loginViewController.view)
         loginViewController.didMove(toParentViewController: self)
         loginViewController.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.loginViewController.view.alpha = 1.0
-        }) {  _ in
-            
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.loginViewController.view.alpha = 1.0
+            }) {  _ in
+                
+            }
         }
+        
         
     }
     
@@ -96,6 +112,14 @@ class AppContrainerViewController: UIViewController {
 
 extension AppContrainerViewController: AppContainerDelegate {
     
+    func didLoggedWithTwitter(_ data: TwitterUser) {
+        user.isLogged = true
+        user.loginToken = data.userId
+        user.username = data.username
+        hideLoginViewController(animated: true)
+        showFeedViewController(animated: true)
+    }
+
     func didTapImageIcon() {
         print("Dismiss login")
         hideLoginViewController(animated: true)
