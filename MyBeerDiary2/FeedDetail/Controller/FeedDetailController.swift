@@ -57,9 +57,9 @@ class FeedDetailController: UIViewController {
         view.addSubview(dateLabel)
         view.addSubview(nameLabel)
         
-        imageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0).isActive = true
-        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20).isActive = true
+        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 220).isActive = true
         
         dateLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
