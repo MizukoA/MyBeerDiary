@@ -9,6 +9,7 @@
 import UIKit
 import TwitterKit
 import Firebase
+import SafariServices
 
 class LoginViewController: UIViewController {
    
@@ -56,11 +57,12 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    let termsConditionsButton: UIButton = {
+    lazy var termsConditionsButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         let buttonAS = NSAttributedString(string: NSLocalizedString("Terms and Conditions", comment: ""), attributes: [NSAttributedString.Key.underlineStyle : 1, .font : UIFont.systemFont(ofSize: 11), .foregroundColor : UIColor.white])
         button.setAttributedTitle(buttonAS, for: .normal)
+        button.addTarget(self, action: #selector(termsConditionsClicked), for: .touchUpInside)
         return button
     }()
     
@@ -182,7 +184,7 @@ class LoginViewController: UIViewController {
                             }
                             let twitterUser = TwitterUser(userId: userId, username: user.name, email: email)
                             strongSelf.database.insertTwitterUser(ofId: userId, data: twitterUser.firebaseObject())
-
+                            strongSelf.delegate?.didLoggedWithTwitter(twitterUser)
                         })
                     }
                 }
@@ -216,6 +218,11 @@ class LoginViewController: UIViewController {
     
     deinit {
         print("deinit LoginViewController")
+    }
+    
+    @objc private func termsConditionsClicked() {
+        let vc = SFSafariViewController(url: URL(string: "https://apple.com")!)
+        self.present(vc, animated: true, completion: nil)
     }
     
 }

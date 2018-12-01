@@ -9,6 +9,9 @@
 import UIKit
 
 class FeedViewController: UIViewController {
+    
+    let user: User
+    
     lazy var diary: Diary = {
         let node0 = DiaryNode(date: "2018/02/10", drink: "Beer", place: "Here", image: UIImage(named: "beer")!)
         let node1 = DiaryNode(date: "2018/02/10", drink: "Wine", place: "hey", image: UIImage(named: "beer1")!)
@@ -30,7 +33,8 @@ class FeedViewController: UIViewController {
         
     }()
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(user: User = User()) {
+        self.user = user
         super.init(nibName: nil, bundle: nil)
         title = "Feed"
     }
@@ -48,6 +52,18 @@ class FeedViewController: UIViewController {
         feedCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         
         setupAddBarButtonItem()
+        fireAlertUD()
+    }
+    
+    private func fireAlertUD() {
+        let userToken = user.loginToken ?? "NaN"
+        let username = user.username ?? "NaN"
+        let isLogged = user.isLogged
+        let message = "loginToken: \(userToken)\nusername: \(username)\nisLogged: \(isLogged)"
+        let alert = UIAlertController(title: "UserDefaultData", message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func setupAddBarButtonItem() {

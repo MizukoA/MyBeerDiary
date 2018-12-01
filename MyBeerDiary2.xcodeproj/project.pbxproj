@@ -18,6 +18,7 @@
 		173CAE9221743980006B012F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 173CAE9121743980006B012F /* GoogleService-Info.plist */; };
 		17A064702171F6E00051A3B4 /* AddNodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A0646F2171F6E00051A3B4 /* AddNodeViewController.swift */; };
 		17E36F8521A8FD9B00966B27 /* AppContrainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E36F8421A8FD9B00966B27 /* AppContrainerViewController.swift */; };
+		17E36F8821A9429000966B27 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E36F8721A9429000966B27 /* User.swift */; };
 		26329C562138268C00AF0E17 /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26329C552138268C00AF0E17 /* DiaryTableViewCell.swift */; };
 		267055B22171DA4100E4D4C5 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267055B12171DA4100E4D4C5 /* FeedCell.swift */; };
 		26E881A1211EAF4000C34AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E881A0211EAF4000C34AA4 /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 		173CAE9121743980006B012F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		17A0646F2171F6E00051A3B4 /* AddNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNodeViewController.swift; sourceTree = "<group>"; };
 		17E36F8421A8FD9B00966B27 /* AppContrainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContrainerViewController.swift; sourceTree = "<group>"; };
+		17E36F8721A9429000966B27 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1DE0D7359F97F93E2B3D7FBB /* Pods_MyBeerDiary2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyBeerDiary2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26329C552138268C00AF0E17 /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
 		267055B12171DA4100E4D4C5 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 			path = AppContrainer;
 			sourceTree = "<group>";
 		};
+		17E36F8621A9427E00966B27 /* AppData */ = {
+			isa = PBXGroup;
+			children = (
+				17E36F8721A9429000966B27 /* User.swift */,
+			);
+			path = AppData;
+			sourceTree = "<group>";
+		};
 		26E88194211EAF4000C34AA4 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +199,7 @@
 		26E8819F211EAF4000C34AA4 /* MyBeerDiary2 */ = {
 			isa = PBXGroup;
 			children = (
+				17E36F8621A9427E00966B27 /* AppData */,
 				17E36F8321A8FD8700966B27 /* AppContrainer */,
 				17A0646E2171F6CD0051A3B4 /* Add */,
 				173B1B052171EE8C00E188E5 /* FeedDetail */,
@@ -380,6 +391,7 @@
 				17285D56219FF40C000C7589 /* Database.swift in Sources */,
 				17285D5921A0116D000C7589 /* TwitterUser.swift in Sources */,
 				26E881A3211EAF4000C34AA4 /* ViewController.swift in Sources */,
+				17E36F8821A9429000966B27 /* User.swift in Sources */,
 				26F34505219FF85800783CC6 /* DatePickerTextField.swift in Sources */,
 				173B1AFD2171957D00E188E5 /* DiaryNode.swift in Sources */,
 				17A064702171F6E00051A3B4 /* AddNodeViewController.swift in Sources */,
