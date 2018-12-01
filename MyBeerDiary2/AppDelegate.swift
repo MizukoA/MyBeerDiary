@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
+        
+        
         // FIrebase init
         FirebaseApp.configure()
         
@@ -25,12 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TWTRTwitter.sharedInstance().start(withConsumerKey:"E1faYiIN1aZ8n5VpSmj4KxI5X", consumerSecret:"8vRXX25bkYboKAKLfmsz5bjhtZbFEBAU3dsKWnhbagWuvdWKbo")
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
+
         
         let appContainer = AppContrainerViewController()
         
         window?.rootViewController = appContainer
+        window?.makeKeyAndVisible()
         return true
+        
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

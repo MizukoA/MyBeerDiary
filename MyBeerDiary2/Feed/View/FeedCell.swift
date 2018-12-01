@@ -63,6 +63,7 @@ class FeedCell:UICollectionViewCell{
         feedImageView.leftAnchor.constraint(equalTo: borderedView.leftAnchor, constant:0) .isActive = true
         feedImageView.rightAnchor.constraint(equalTo: borderedView.rightAnchor, constant:0) .isActive = true
         feedImageView.heightAnchor.constraint(equalToConstant: 162) .isActive = true
+        
         dateLabel.topAnchor.constraint(equalTo: feedImageView.bottomAnchor, constant:10) .isActive = true
         dateLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant:20) .isActive = true
         dateLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant:-20) .isActive = true

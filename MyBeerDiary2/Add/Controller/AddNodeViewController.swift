@@ -9,7 +9,7 @@
 import UIKit
 
 class AddNodeViewController: UIViewController {
-// 写真を表示する
+    // 写真を表示する
     lazy var addImageView: UIImageView = {
         let aiv = UIImageView()
         aiv.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +23,7 @@ class AddNodeViewController: UIViewController {
         return aiv
     }()
     
-// 日付を記録する
+    // 日付を記録する
     let tf: DatePickerTextField = {
         let tf = DatePickerTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +34,7 @@ class AddNodeViewController: UIViewController {
     }()
     
 
-// ビールの名前や場所を記録する
+    // ビールの名前や場所を記録する
     lazy var nametf: UITextField = {
         let nametf = UITextField()
         nametf.translatesAutoresizingMaskIntoConstraints = false
@@ -62,26 +62,27 @@ class AddNodeViewController: UIViewController {
 
         
         view.backgroundColor = .white
-// UIパーツを表示するaddSubView
+        // UIパーツのサイズ on addSubView
+        // for ImagreView
         view.addSubview(addImageView)
         addImageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20).isActive = true
         addImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         addImageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        addImageView.heightAnchor.constraint(equalToConstant: 280).isActive = true
-        
+        addImageView.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        // for textField_1 datePicker
         view.addSubview(tf)
         tf.topAnchor.constraint(equalTo: addImageView.bottomAnchor, constant: 20).isActive = true
         tf.leftAnchor.constraint(equalTo: addImageView.leftAnchor, constant: 0).isActive = true
         tf.rightAnchor.constraint(equalTo: addImageView.rightAnchor, constant: 0).isActive = true
         tf.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
+        // for textField_2 note beer name, drinking place and so on
         view.addSubview(nametf)
         nametf.topAnchor.constraint(equalTo: tf.bottomAnchor, constant: 20).isActive = true
         nametf.leftAnchor.constraint(equalTo: addImageView.leftAnchor, constant: 0).isActive = true
         nametf.rightAnchor.constraint(equalTo: addImageView.rightAnchor, constant: 0).isActive = true
         nametf.heightAnchor.constraint(equalToConstant: 50).isActive = true
        
-        // view.addSubview(shareButton)
+        //  shareButton edit on addSubview
         
         let shareBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTouchShareButton))
         navigationItem.rightBarButtonItem = shareBarButton
@@ -91,12 +92,31 @@ class AddNodeViewController: UIViewController {
     
     // close AddNodeViewController
     private func setupDismissLeftBarButtonItem() {
-        let dismissBarButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissVC))
+        let dismissBarButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissWithSave))
         self.navigationItem.leftBarButtonItem = dismissBarButton
     }
     
     @objc private func dismissVC() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func dismissWithSave() {
+        let alert = UIAlertController(title: "Do you want to save?", message: nil, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .cancel) { (alert) in
+            
+        }
+        let noAction = UIAlertAction(title: "No", style: .destructive) { (alert) in
+            
+        }
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        if addImageView.image == #imageLiteral(resourceName: "launchlogo")  || nametf.text == nil {
+            print("no save")
+        } else {
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
     }
     
     @objc func didTouchShareButton() {
@@ -196,6 +216,7 @@ extension AddNodeViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         picker.dismiss(animated: true, completion: nil)
     }
+    
 }
 
 extension AddNodeViewController: UITextFieldDelegate {
@@ -208,4 +229,21 @@ extension AddNodeViewController: UITextFieldDelegate {
     
 }
 
-
+//extension UIImage {
+//    func resizedImage(size _size: CGSize) -> UIImage {
+//        // アスペクト比を考慮し、変更後のサイズを計算する
+//        let wRatio = _size.width / size.width
+//        let hRatio = _size.height / size.height
+//        let ratio = wRatio < hRatio ? wRatio : hRatio
+//        let resized = CGSize(
+//            width: size.width * ratio,
+//            height: size.height * ratio
+//        )
+//        // サイズ変更
+//        UIGraphicsBeginImageContextWithOptions(resized, false, scale)
+//        draw(in: CGRect(origin: .zero, size: resized))
+//        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//
+//        return resizedImage
+//}
