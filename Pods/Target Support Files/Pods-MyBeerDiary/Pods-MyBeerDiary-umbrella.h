@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_MyBeerDiary2VersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_MyBeerDiary2VersionString[];
+FOUNDATION_EXPORT double Pods_MyBeerDiaryVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_MyBeerDiaryVersionString[];
 

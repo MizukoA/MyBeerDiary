@@ -15,7 +15,7 @@ class FeedDetailController: UIViewController {
     let imageView: UIImageView = {
        let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.backgroundColor = .lightGray
         iv.layer.masksToBounds = true
         return iv
@@ -58,9 +58,11 @@ class FeedDetailController: UIViewController {
         view.addSubview(nameLabel)
         
         imageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20).isActive = true
+        let width = UIScreen.main.bounds.width - 20 * 2
+        
         imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 220).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: width).isActive = true
         
         dateLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
         dateLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
@@ -77,8 +79,20 @@ class FeedDetailController: UIViewController {
     }
     
     func populateData() {
-//        imageView.image = node.image
-        dateLabel.text = "Date: \(node.date)"
-        nameLabel.text = "Drink: \(node.drink)"
+        
+        if let pictureUrl = node.pictureUrl {
+            imageView.kf.setImage(with: URL(string: pictureUrl))
+        }
+        
+        if let date = node.date {
+            dateLabel.text = "Date: \(date)"
+
+        }
+        
+        if let drink = node.drink {
+            nameLabel.text = "Drink: \(drink)"
+
+        }
+        
     }
 }
